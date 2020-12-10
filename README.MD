@@ -9,6 +9,8 @@
 - It became too difficult to maintain configurations before installing perform a find and replace for the following fields:
   - `eks-demo` to your cluster name
   - `us-east-2` to your region
+  - `9840170+lukesterg@users.noreply.github.com` with your email address.
+  - `podinfo.questdev.xyz` to the domain you want to host podinfo.
 
 ## To setup the cluster run
 
@@ -33,6 +35,7 @@ managedNodeGroups:
     minSize: 2
     maxSize: 2
     privateNetworking: true
+    volumeEncrypted: true
     iam:
       withAddonPolicies:
         imageBuilder: true
@@ -58,3 +61,5 @@ kubectl apply -f docs/master.key
 ```
 
 Add the SSH deployment key to your git repository and run `fluxctl sync --k8s-fwd-ns flux`.
+
+Assign the domain to the cluster. If using Route53 add an ALIAS and select the load balancer otherwise run `kubectl get -n projectcontour service envoy -o wide` and add it as a CNAME.

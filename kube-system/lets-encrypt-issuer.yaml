@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: lets-encrypt-issuer
+spec:
+  acme:
+    email: 9840170+lukesterg@users.noreply.github.com
+    privateKeySecretRef:
+      name: lets-encrypt-issuer
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        route53:
+          region: us-east-2
