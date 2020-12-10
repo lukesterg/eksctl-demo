@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: pod-info
+  namespace: pod-info
+spec:
+  releaseName: pod-info
+  chart:
+    repository: https://stefanprodan.github.io/podinfo/
+    name: podinfo
+    version: 5.1.1
+  values:
+    replicaCount: 2
