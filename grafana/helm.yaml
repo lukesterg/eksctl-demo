@@ -17,8 +17,13 @@ spec:
       datasources.yaml:
         apiVersion: 1
         datasources:
-        - name: Prometheus
+        - name: Analytics
           type: prometheus
           url: http://prometheus-server.prometheus.svc.cluster.local
+          access: proxy
+          isDefault: false
+        - name: Logs
+          type: loki
+          url: http://promtail-loki.loki.svc.cluster.local:3100
           access: proxy
           isDefault: true
