@@ -6,6 +6,7 @@
 
 - The sealed secrets private key should not be stored in this repository. This should be stored separately but is included for demo purposes.
 - `git-poll-interval` is set to 1 minute. This should be removed (the default is 5 minutes). 1m is good for demoing.
+- Change Grafana password "tempPassword" to a sealed secret.
 - It became too difficult to maintain configurations before installing perform a find and replace for the following fields:
   - `eks-demo` to your cluster name
   - `us-east-2` to your region

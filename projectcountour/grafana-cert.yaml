@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: grafana-cert
+  namespace: projectcontour
+spec:
+  secretName: grafana-ssl
+  commonName: "grafana.questdev.xyz"
+  dnsNames:
+  - "grafana.questdev.xyz"
+  issuerRef:
+    name: lets-encrypt-issuer
+    kind: ClusterIssuer

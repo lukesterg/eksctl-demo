@@ -1,0 +1,13 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: grafana-proxy
+  namespace: projectcontour
+spec:
+  virtualhost:
+    fqdn: grafana.questdev.xyz
+    tls:
+      secretName: grafana-ssl
+  includes:
+    - name: grafana-proxy
+      namespace: grafana
