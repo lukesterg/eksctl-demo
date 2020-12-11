@@ -8,6 +8,7 @@
 - `git-poll-interval` is set to 1 minute. This should be removed (the default is 5 minutes). 1m is good for demoing.
 - Change Grafana password "tempPassword" to a sealed secret.
 - Add persistent volume to Loki
+- Delete MS teams integration. Look for `msteams.url`.
 - Volume encryption on Grafana, Prometheus and Loki.
 - It became too difficult to maintain configurations before installing perform a find and replace for the following fields:
   - `eks-demo` to your cluster name

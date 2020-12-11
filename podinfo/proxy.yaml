@@ -7,4 +7,4 @@ spec:
   routes:
     - services:
         - name: podinfo
-          port: 9898
+          port: 80
