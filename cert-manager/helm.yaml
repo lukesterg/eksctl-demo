@@ -11,3 +11,6 @@ spec:
     version: 1.1.0
   values:
     installCRDs: true
+    ingressShim.defaultIssuerName: lets-encrypt-issuer
+    ingressShim.defaultIssuerKind: ClusterIssuer
+    ingressShim.defaultIssuerGroup: cert-manager.io
