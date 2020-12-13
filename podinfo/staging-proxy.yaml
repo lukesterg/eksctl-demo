@@ -1,10 +1,10 @@
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
-  name: podinfo-proxy
+  name: podinfo-staging-proxy
   namespace: podinfo
 spec:
   routes:
     - services:
-        - name: podinfo
+        - name: podinfo-canary
           port: 80

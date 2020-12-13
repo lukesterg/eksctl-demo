@@ -11,3 +11,5 @@ spec:
     version: 5.1.1
   values:
     replicaCount: 2
+    ui:
+      logo: https://eks.handson.flagger.dev/cuddle_bunny.gif

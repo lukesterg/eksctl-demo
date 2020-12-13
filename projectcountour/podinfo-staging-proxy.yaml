@@ -1,0 +1,13 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: podinfo-staging-proxy
+  namespace: projectcontour
+spec:
+  virtualhost:
+    fqdn: podinfo-staging.questdev.xyz
+    tls:
+      secretName: podinfo-staging-ssl
+  includes:
+    - name: podinfo-staging-proxy
+      namespace: podinfo
