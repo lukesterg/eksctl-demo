@@ -12,5 +12,5 @@ spec:
   values:
     replicaCount: 2
     ui:
-    #  logo: https://eks.handson.flagger.dev/cuddle_bunny.gif
+      logo: https://eks.handson.flagger.dev/cuddle_bunny.gif
       color: '#123456'

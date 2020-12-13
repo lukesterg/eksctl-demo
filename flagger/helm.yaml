@@ -13,6 +13,7 @@ spec:
     meshProvider: "contour"
     ingressClass: "contour"
     metricsServer: http://prometheus-server.prometheus.svc.cluster.local
+    crd.create: true
 
     # This is for a demo. It is going to get deleted.
     msteams.url: https://outlook.office.com/webhook/dc062b76-609b-4a6d-8d35-7a849d348846@94797e0d-39d7-4f03-9ec2-bc29b56fe1ac/IncomingWebhook/13b906f3131f40d797f5b07a8eca19ff/7a16d4ee-67e4-452f-b0c8-6bd88338bd22
