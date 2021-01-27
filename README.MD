@@ -34,35 +34,33 @@ managedNodeGroups:
   - name: eks-demo
     instanceType: t3a.medium
     instancePrefix: eks-demo-eks
-    desiredCapacity: 2
+    desiredCapacity: 3
     minSize: 2
-    maxSize: 2
+    maxSize: 3
     privateNetworking: true
     volumeEncrypted: true
+    volumeSize: 80
     iam:
       withAddonPolicies:
         imageBuilder: true
         autoScaler: true
-        albIngress: true
-        appMesh: true
-        cloudWatch: true
-        externalDNS: true
         ebs: true
         efs: true
         certManager: true
-        xRay: true
+
+git:
+  repo:
+    url: git@github.com:lukesterg/eksctl-demo.git
+    email: 9840170+lukesterg@users.noreply.github.com
 EOF
-
-EKSCTL_EXPERIMENTAL=true \
- eksctl enable repo \
- --git-url git@github.com:lukesterg/eksctl-demo.git \
- --git-email 9840170+lukesterg@users.noreply.github.com \
- --cluster eks-demo \
- --region us-east-2
-
-kubectl apply -f docs/master.key
 ```
 
-Add the SSH deployment key to your git repository and run `fluxctl sync --k8s-fwd-ns flux`.
+After running the above command the last line will include an SSH key. Add this to your SSH repository then run `fluxctl sync --k8s-fwd-ns flux`.
 
-Assign the domain to the cluster. If using Route53 add an ALIAS and select the load balancer otherwise run `kubectl get -n projectcontour service envoy -o wide` and add it as a CNAME.
+Then add the target domain to the network load balancer.
+
+## Argo deployment
+
+To connect to the argo server run `kubectl port-forward svc/argocd-server -n argocd 8080:443` and go to `https://localhost:8080`.
+
+To set a password first get the initial password `kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2` then run `argocd login 127.0.0.1:8080` with the username `admin` and the password from the previous command. Then run `argocd account update-password` to update the password.
